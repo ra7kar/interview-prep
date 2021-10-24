@@ -9,7 +9,7 @@ from linked_list import LinkedList, Node
 
 
 @pytest.mark.parametrize("input", [
-    [], [0], [1, 0] [0, 1, 0], [9, 9, 9]
+    [], [0], [1, 0], [0, 1, 0], [9, 9, 9]
 ])
 def test_linked_list(input):
     ll = LinkedList(input)
