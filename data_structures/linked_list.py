@@ -30,23 +30,23 @@ class Node:
 class LinkedList:
     def __init__(self, pylist=[]) -> None:
         self.head = None
+        self.tail =None
+        self.len = 0
         for i in pylist:
             self.append(i)
 
     def append(self, data):
+        node = Node(data)
         if self.head == None:
-            self.head = Node(data)
+            self.head = node
+            self.tail = self.head
         else:
-            self._add(self.head, data)
+            self.tail.next = node
+            self.tail = self.tail.next
+        self.len += 1
 
-    def _add(self, sub_node, data):
-        cur_node = sub_node
-        
-        while cur_node != None:
-            if cur_node.next == None:
-                cur_node.next = Node(data)
-                return
-            cur_node = cur_node.next
+    def __len__(self):
+        return self.len
 
     def __str__(self) -> str:
         return ", ".join(str(i.data) for i in self)
