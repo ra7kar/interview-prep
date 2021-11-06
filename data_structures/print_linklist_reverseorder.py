@@ -1,6 +1,4 @@
-# print linklist in revers order
-
-# from print_link_list import Linklist
+# Print linklist in revers order
 
 
 class Node:
