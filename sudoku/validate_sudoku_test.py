@@ -1,5 +1,5 @@
 # Internal
-from validate_sudoku import validate_sudoko_board
+from validate_sudoku import validate_sudoku_board
 
 # External
 import pytest
@@ -51,4 +51,4 @@ board3 = [
     ],
 )
 def test_validate_sudoku(board, result):
-    assert validate_sudoko_board(board) == result
+    assert validate_sudoku_board(board) == result

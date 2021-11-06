@@ -4,10 +4,14 @@ from math import sqrt
 from pprint import pprint
 
 
-def validate_sudoko_board(board):
-    """
-    Return True if board is correct
-    Return False if board is incorrect
+def validate_sudoku_board(board):
+    """Check if a sudoku board is valid.
+
+    Args:
+        board (list[list[int]]): Board specified as a 2d array.
+
+    Returns:
+        boolean: Return True if board is valid, else return False.
     """
 
     board_len = len(board)
@@ -57,7 +61,7 @@ if __name__ == "__main__":
         [3, 4, 9, 2, 1, 6, 8, 5, 7],
     ]
 
-    result = validate_sudoko_board(board)
+    result = validate_sudoku_board(board)
 
     print("" * 2)
     print("-" * 32)
