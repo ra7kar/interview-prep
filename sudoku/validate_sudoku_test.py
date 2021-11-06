@@ -42,7 +42,7 @@ board3 = [
 ]
 
 
-@pytest.mark.parameterize(
+@pytest.mark.parametrize(
     "board, result",
     [
         (board1, True),
