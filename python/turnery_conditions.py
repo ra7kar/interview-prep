@@ -31,7 +31,7 @@ from getpass import getpass
 #     ef.flush()
 #     print(f.read())
 
-#---------------------------------
+# ---------------------------------
 # Enumerate function
 
 # names = ['First Name', 'Second Name', 'Thrid name', 'Fourth name', 'Fifth Name']
@@ -41,7 +41,7 @@ from getpass import getpass
 #     print(values)
 
 
-#-------------------
+# -------------------
 # Unpack
 
 # a, b, *c= ( 1, 2, 3,4, 5, )
@@ -50,7 +50,7 @@ from getpass import getpass
 # print(b)
 # print(c)
 
-#----------------------
+# ----------------------
 # Getting and Setting attributes on objects
 
 # class Person():
@@ -70,7 +70,7 @@ from getpass import getpass
 # print(person.first)
 # print(person.last)
 
-#-----------------------------
+# -----------------------------
 # Secret inputs
 
 username = input("Username : ")

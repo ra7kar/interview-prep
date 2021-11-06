@@ -21,4 +21,4 @@ print(n)
 print(repr(n))
 y = Node(10)
 print(repr(y))
-#assert eval(repr(n)) == n
+# assert eval(repr(n)) == n

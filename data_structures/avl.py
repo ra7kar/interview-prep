@@ -2,6 +2,7 @@
 
 import random
 
+
 class Node:
     def __init__(self, data, left=None, right=None):
         self.data = data
@@ -14,7 +15,6 @@ class Node:
         return "\n".join(lines)
 
     def _display_aux(self):
-        """Returns list of strings, width, height, and horizontal coordinate of the root."""
         # No child.
         if self.right is None and self.left is None:
             line = "({}, {})".format(self.data, self.height)
@@ -28,9 +28,9 @@ class Node:
             lines, n, p, x = self.left._display_aux()
             s = "({}, {})".format(self.data, self.height)
             u = len(s)
-            first_line = (x + 1) * ' ' + (n - x - 1) * '_' + s
-            second_line = x * ' ' + '/' + (n - x - 1 + u) * ' '
-            shifted_lines = [line + u * ' ' for line in lines]
+            first_line = (x + 1) * " " + (n - x - 1) * "_" + s
+            second_line = x * " " + "/" + (n - x - 1 + u) * " "
+            shifted_lines = [line + u * " " for line in lines]
             return [first_line, second_line] + shifted_lines, n + u, p + 2, n + u // 2
 
         # Only right child.
@@ -38,9 +38,9 @@ class Node:
             lines, n, p, x = self.right._display_aux()
             s = "({}, {})".format(self.data, self.height)
             u = len(s)
-            first_line = s + x * '_' + (n - x) * ' '
-            second_line = (u + x) * ' ' + '\\' + (n - x - 1) * ' '
-            shifted_lines = [u * ' ' + line for line in lines]
+            first_line = s + x * "_" + (n - x) * " "
+            second_line = (u + x) * " " + "\\" + (n - x - 1) * " "
+            shifted_lines = [u * " " + line for line in lines]
             return [first_line, second_line] + shifted_lines, n + u, p + 2, u // 2
 
         # Two children.
@@ -48,18 +48,18 @@ class Node:
         right, m, q, y = self.right._display_aux()
         s = "({}, {})".format(self.data, self.height)
         u = len(s)
-        first_line = (x + 1) * ' ' + (n - x - 1) * \
-            '_' + s + y * '_' + (m - y) * ' '
-        second_line = x * ' ' + '/' + \
-            (n - x - 1 + u + y) * ' ' + '\\' + (m - y - 1) * ' '
+        first_line = (x + 1) * " " + (n - x - 1) * "_" + s + y * "_" + (m - y) * " "
+        second_line = (
+            x * " " + "/" + (n - x - 1 + u + y) * " " + "\\" + (m - y - 1) * " "
+        )
         if p < q:
-            left += [n * ' '] * (q - p)
+            left += [n * " "] * (q - p)
         elif q < p:
-            right += [m * ' '] * (p - q)
+            right += [m * " "] * (p - q)
         zipped_lines = zip(left, right)
-        lines = [first_line, second_line] + \
-            [a + u * ' ' + b for a, b in zipped_lines]
+        lines = [first_line, second_line] + [a + u * " " + b for a, b in zipped_lines]
         return lines, n + m + u, max(p, q) + 2, n + u // 2
+
 
 class AVLTree:
     def __init__(self, pylist=[]):
@@ -72,7 +72,7 @@ class AVLTree:
             self.root = Node(data)
         else:
             self.root = self._insert(self.root, data)
-        print("="*30 + str(data) + "="*30)
+        print("=" * 30 + str(data) + "=" * 30)
         print(self)
 
     def _insert(self, subroot, data):
@@ -98,22 +98,22 @@ class AVLTree:
 
         # assing the new root to return.
         new_root = subroot
-     
+
         # check if imbalance exist
-        if abs(height_left-height_right) > 1:
+        if abs(height_left - height_right) > 1:
             new_root = self._fix_imbalance(subroot, height_left, height_right)
 
         return new_root
 
     def _fix_imbalance(self, subroot, height_left, height_right):
         if height_left > height_right:  # left heavy
-            
+
             # get left , left and right heights
             left_left_height = subroot.left.left.height if subroot.left.left else 0
             left_right_height = subroot.left.right.height if subroot.left.right else 0
 
-            if left_left_height > left_right_height : # left left heavy
-                #right rotate
+            if left_left_height > left_right_height:  # left left heavy
+                # right rotate
                 new_root = AVLTree._right_rotate(subroot)
             else:
                 # left right rotate left right heavy
@@ -122,10 +122,12 @@ class AVLTree:
         else:
 
             right_left_height = subroot.right.left.height if subroot.right.left else 0
-            right_right_height = subroot.right.right.height if subroot.right.right else 0
+            right_right_height = (
+                subroot.right.right.height if subroot.right.right else 0
+            )
 
-            if right_right_height > right_left_height: # right right heavy
-                #left rotate
+            if right_right_height > right_left_height:  # right right heavy
+                # left rotate
                 new_root = AVLTree._left_rotate(subroot)
             else:
                 # right left rotate    right left heavy
@@ -135,18 +137,14 @@ class AVLTree:
 
         return new_root
 
-
-
     @staticmethod
     def _right_rotate(subroot):
         new_root = subroot.left
         subroot.left = new_root.right
         new_root.right = subroot
 
-
-
         return new_root
-    
+
     @staticmethod
     def _left_right_rotate(subroot):
         new_root = subroot.left.right
@@ -159,7 +157,7 @@ class AVLTree:
         return new_root
 
     def _left_rotate(subroot):
-        
+
         new_root = subroot.right
         subroot.right = new_root.left
         new_root.left = subroot
@@ -185,11 +183,11 @@ class AVLTree:
 
         left_height = AVLTree._fix_height(subroot.left)
         right_height = AVLTree._fix_height(subroot.right)
-        
+
         subroot.height = max(left_height, right_height) + 1
-        
+
         return subroot.height
-    
+
     def __str__(self):
         return str(self.root)
 
@@ -206,7 +204,7 @@ class AVLTree:
         yield from _inorder_traversal(self.root)
 
 
-ll = [] #[6,3,7,1,4,5]
+ll = []  # [6,3,7,1,4,5]
 t = AVLTree(ll)
 
 if len(ll) == 0:
@@ -217,4 +215,4 @@ if len(ll) == 0:
 
     print("Insert list: {}".format(insert_list))
 
-#print(t)
+# print(t)

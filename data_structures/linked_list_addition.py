@@ -2,13 +2,15 @@
 
 # create link list
 
+
 class Node:
     def __init__(self, data, next=None):
         self.data = data
         self.next = next
-        
+
     def __str__(self) -> str:
         return "({})".format(self.data)
+
 
 class LinkedList:
     def __init__(self, py_list=[]):
@@ -27,11 +29,11 @@ class LinkedList:
         if sub_node.next is None:
             sub_node.next = Node(data)
         else:
-            self._append_helper( sub_node.next, data)
+            self._append_helper(sub_node.next, data)
 
     def __str__(self):
         return "->".join(str(i.data) for i in self)
-        
+
     def __iter__(self) -> str:
         cur_node = self.head
         while cur_node is not None:
@@ -57,18 +59,18 @@ class LinkedList:
 
             carry = 1 if total > 9 else 0
 
-            ll3.append(total%10)
+            ll3.append(total % 10)
 
         if carry > 0:
             ll3.append(carry)
-        
+
         return ll3
-    
+
     def __repr__(self):
         return "LinkedList({})".format([n.data for n in self])
-        
+
     def __mul__(self, ll2):
-      pass  
+        pass
 
 
 ll1 = LinkedList([9, 9, 10, 10])
