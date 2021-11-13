@@ -19,18 +19,19 @@ def validate_sudoku_board(board):
     # # check for duplicate numbers in ROW
     for row in board:
         seen = set()
-        for col in row:
-            if col in seen:
+        for val in row:
+            if val in seen and val != 0:
                 return False
-            seen.add(col)
+            seen.add(val)
 
     # check for duplicates numbers in COLUMNS
     for col_idx in range(board_len):
         seen = set()
         for row in board:
-            if row[col_idx] in seen:
+            val = row[col_idx]
+            if val in seen and val != 0:
                 return False
-            seen.add(row[col_idx])
+            seen.add(val)
 
     # check the 3x3 box for duplicates in a 9x9 board
     box_size = int(sqrt(board_len))  # box size is 3 x 3
@@ -40,7 +41,7 @@ def validate_sudoku_board(board):
             for row in range(row_box * box_size, (row_box + 1) * box_size):
                 for col in range(col_box * box_size, (col_box + 1) * box_size):
                     val = board[row][col]
-                    if val in seen:
+                    if val in seen and val != 0:
                         return False
                     seen.add(val)
 
