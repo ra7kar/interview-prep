@@ -70,7 +70,7 @@ def validate(board, num, pos):
             return False
 
     # check duplicate numbers in columns
-    if i in range(board_len):
+    for i in range(board_len):
         val = board[i][col]
         if val == num and row != i:
             return False
@@ -88,6 +88,12 @@ def validate(board, num, pos):
 
 
 def solve(board):
+
+    if solve_helper(board):
+        return board
+
+
+def solve_helper(board):
     """Solve sudoku puzzle.
 
     Args:
@@ -105,7 +111,7 @@ def solve(board):
         if validate(board, i, find):
             board[row][col] = i
 
-            if solve(board):
+            if solve_helper(board):
                 return True
 
             board[row][col] = 0
@@ -116,30 +122,19 @@ def solve(board):
 if __name__ == "__main__":
 
     board = [
-        [0, 0, 0, 0, 8, 6, 0, 0, 0],
+        [0, 7, 4, 0, 6, 0, 0, 0, 1],
+        [0, 0, 1, 3, 0, 2, 8, 0, 0],
+        [0, 0, 0, 8, 0, 0, 0, 0, 0],
+        [0, 0, 9, 0, 7, 0, 1, 4, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 8],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    ]
-
-    board1 = [
-        [0, 0, 0, 4, 0, 0, 1, 2, 0],
-        [6, 0, 0, 0, 7, 5, 0, 0, 9],
-        [0, 0, 0, 6, 0, 1, 0, 7, 8],
-        [0, 0, 7, 0, 4, 0, 2, 6, 0],
-        [0, 0, 1, 0, 5, 0, 9, 3, 0],
-        [9, 0, 4, 0, 6, 0, 0, 0, 5],
-        [0, 7, 0, 3, 0, 0, 0, 1, 2],
-        [1, 2, 0, 0, 0, 7, 4, 0, 0],
-        [0, 4, 9, 2, 0, 6, 0, 0, 7],
+        [7, 0, 0, 0, 3, 0, 9, 0, 0],
+        [0, 0, 0, 0, 8, 0, 0, 0, 0],
     ]
 
     print_board(board)
-    solve(board)
+    a = solve(board)
     print("----Result---" * 2)
     print_board(board)
+    print(a)
