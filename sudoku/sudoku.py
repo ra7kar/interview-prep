@@ -1,18 +1,33 @@
-# Sudoku Solver
+# solve sudoku puzzle
 
-# find empy cell
-def find_empty(board):
-    """This function returns row col position if that cell is 0
-    else will return True
+
+def solve_board(input_board):
+    """Solve a sudoku puzzle
 
     Args:
-        board (list of lists): sudoku board values
+        input_board (list of list[int]): list of lists with integers
+        representing the sudoku board
 
-    Return:
-        returns a tuple if empyt cell is found, else
-        will return True as the not found.
+    Returns:
+        list of list: solved sudoku board else prints unsolvable board
     """
+    board = input_board.copy()
+    if solve_helper(board):
+        return board
+    else:
+        print(" Board cannot be solved  ....!")
 
+
+def find_empty_spot(board):
+    """Find the empty spot in the board
+
+    Args:
+        board (list of list[int]): sudoku board, which is a list of lists
+
+    Returns:
+        Tuple and None: Tuple is returned when a empty spot is found
+        else a None is returned
+    """
     board_len = len(board)
 
     for row in range(board_len):
@@ -20,103 +35,96 @@ def find_empty(board):
             if board[row][col] == 0:
                 return (row, col)
 
+    return (None, None)  # no empty slots remaining in the board
+
+
+def is_valid(board, guess, row, col):
+    """Validated is the guess (int) is valid input to solve the sudoku
+    puzzle
+
+    Args:
+        board (list of lists): sudoku board
+        guess (int): number attempted to add to the sudoku board
+        row (int): row possition where the Zero spot was found
+        col (int): col possition where the Zero spot was found
+
+    Returns:
+        boolean: Return True if valid else return False"""
+
+    # lets start checking for duplicates with the row
+    row_val = board[row]
+    if guess in row_val:
+        return False
+
+    # lets check the column values for duplicates
+    col_val = [board[i][col] for i in range(len(board))]
+
+    if guess in col_val:
+        return False
+
+    # check for duplicated in the box
+    row_start = (row // 3) * 3
+    col_start = (col // 3) * 3
+    for r in range(row_start, row_start + 3):
+        for c in range(col_start, col_start + 3):
+            if board[r][c] == guess:
+                return False
+
+    return True
+
+
+def solve_helper(board):
+    """A helper function to sudoku puzzle solver
+
+    Args:
+        board (list of lists[int]): helper function
+
+    Returns:
+        boolean: returns True if guessed number to be added is correct
+        else will return a False
+    """
+
+    board_len = len(board)
+
+    # Step 1 - check empyt spot in the board
+    row, col = find_empty_spot(board)
+
+    if row is None:
+        return True  # puzzle is resolved
+
+    # Step 2 - if there is a empty slot to put a number, we validate it
+    for guess in range(1, board_len + 1):
+        # step 3 - check if this is a valid guess
+        if is_valid(board, guess, row, col):
+            board[row][col] = guess
+
+            if solve_helper(board):
+                return True
+
+        board[row][col] = 0
+
     return False
 
 
 def print_board(board):
-    """This function print the sudoku board in a readable format
-    from the list of lists input
+    """Print the sudoku board
 
     Args:
-        board (list of lists): sudoku board input
+        board (list of lists): sudoku board, list of list[int]
     """
     board_len = len(board)
-    print("")
+
     for row in range(board_len):
         if row % 3 == 0 and row != 0:
             print("-" * 25)
         for col in range(board_len):
             val = board[row][col]
-
             if col % 3 == 0 and col != 0:
                 print(" | ", end=" ")
             if col == 8:
                 print(val)
             else:
                 print(val, end=" ")
-
-    print("")
-
-
-def validate(board, num, pos):
-    """Check the board for duplicates if the input num is entered in pos
-    Args:
-        board (list of lists): sudoku board
-        num (int): number to be entered in the board
-        pos (tuple): row and column of the position where the new
-        number has to be added
-    Return:
-        False if duplicate number is found
-        True if the num can be entered as a new number in the board
-    """
-
-    board_len = len(board)
-    row, col = pos
-
-    # check duplicate numbers in rows
-    for i in range(board_len):
-        val = board[row][i]
-        if val == num and col != i:
-            return False
-
-    # check duplicate numbers in columns
-    for i in range(board_len):
-        val = board[i][col]
-        if val == num and row != i:
-            return False
-
-    # check duplicate numbers in the box
-    box_row = row // 3
-    box_col = col // 3
-    for i in range(box_row * 3, box_row * 3 + 3):  # i refers to rows
-        for j in range(box_col * 3, box_col * 3 + 3):  # j refers to columns
-            val = board[i][j]
-            if val == num and (i, j) != (row, pos):
-                return False
-
-    return True
-
-
-def solve(board):
-
-    if solve_helper(board):
-        return board
-
-
-def solve_helper(board):
-    """Solve sudoku puzzle.
-
-    Args:
-        board (list[list[int]]): sudoku board
-    """
-    board_len = len(board)
-    find = find_empty(board)
-
-    if not find:
-        return True
-    else:
-        row, col = find
-
-    for i in range(1, board_len + 1):
-        if validate(board, i, find):
-            board[row][col] = i
-
-            if solve_helper(board):
-                return True
-
-            board[row][col] = 0
-
-    return False
 
 
 if __name__ == "__main__":
@@ -134,7 +142,6 @@ if __name__ == "__main__":
     ]
 
     print_board(board)
-    a = solve(board)
-    print("----Result---" * 2)
-    print_board(board)
-    print(a)
+    result = solve_board(board)
+    print("-" * 5 + "Result" + "-" * 5)
+    print_board(result)
