@@ -15,7 +15,7 @@ def solve_board(input_board):
     if solve_helper(board):
         return board
     else:
-        print(" Board cannot be solved  ....!")
+        return False
 
 
 def find_empty_spot(board):
