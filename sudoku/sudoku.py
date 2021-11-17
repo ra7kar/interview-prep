@@ -1,4 +1,5 @@
 # solve sudoku puzzle
+import copy
 
 
 def solve_board(input_board):
@@ -9,13 +10,13 @@ def solve_board(input_board):
         representing the sudoku board
 
     Returns:
-        list of list: solved sudoku board else prints unsolvable board
+        tuple : status of solution and the sudoku board
     """
-    board = input_board.copy()
+    board = copy.deepcopy(input_board)
     if solve_helper(board):
-        return board
-    else:
-        return False
+        return (True, board)
+
+    return (False, board)
 
 
 def find_empty_spot(board):
@@ -130,18 +131,19 @@ def print_board(board):
 if __name__ == "__main__":
 
     board = [
-        [0, 7, 4, 0, 6, 0, 0, 0, 1],
-        [0, 0, 1, 3, 0, 2, 8, 0, 0],
-        [0, 0, 0, 8, 0, 0, 0, 0, 0],
-        [0, 0, 9, 0, 7, 0, 1, 4, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 6, 0, 0, 0, 0],
+        [0, 8, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 5, 0],
+        [0, 0, 8, 5, 0, 0, 0, 0, 2],
+        [0, 0, 7, 0, 0, 0, 0, 0, 0],
+        [0, 0, 6, 0, 0, 0, 4, 0, 0],
+        [8, 0, 4, 0, 0, 0, 9, 1, 5],
         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [7, 0, 0, 0, 3, 0, 9, 0, 0],
-        [0, 0, 0, 0, 8, 0, 0, 0, 0],
     ]
 
     print_board(board)
     result = solve_board(board)
     print("-" * 5 + "Result" + "-" * 5)
-    print_board(result)
+    # print_board(result)
+    print(result)

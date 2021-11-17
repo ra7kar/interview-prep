@@ -10,7 +10,7 @@ import sudoku
 from validate_sudoku import validate_sudoku_board
 
 
-NUM_BOARDS = 10
+NUM_BOARDS = 9
 SQUARE_SIZE = 9
 
 
@@ -33,14 +33,15 @@ def generate_board():
             grid[r][c] = pick
             if validate_sudoku_board(grid):
                 break
-
     return grid
 
 
 @pytest.mark.parametrize("board", [generate_board() for _ in range(NUM_BOARDS)])
 def test_random_sudoku(board):
-    pprint.pprint(board)
     solution = sudoku.solve_board(board)
-    assert validate_sudoku_board(solution), "Invalid solution:\n{}".format(
-        pprint.pformat(solution)
-    )
+    if solution[0]:
+        assert validate_sudoku_board(solution[1]), "Invalid solution:\n{}".format(
+            pprint.pformat(solution[1])
+        )
+    else:
+        print("Invalid solution:")
