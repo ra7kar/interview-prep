@@ -6,7 +6,7 @@ def solve_board(input_board):
     """Solve a sudoku puzzle
 
     Args:
-        input_board (list of list[int]): list of lists with integers
+        input_board (list[list[]]): list of lists with integers
         representing the sudoku board
 
     Returns:
@@ -23,7 +23,7 @@ def find_empty_spot(board):
     """Find the empty spot in the board
 
     Args:
-        board (list of list[int]): sudoku board, which is a list of lists
+        board (list[list[int]): sudoku board, which is a list of lists
 
     Returns:
         Tuple and None: Tuple is returned when a empty spot is found
@@ -44,7 +44,7 @@ def is_valid(board, guess, row, col):
     puzzle
 
     Args:
-        board (list of lists): sudoku board
+        board (list[list[]]): sudoku board
         guess (int): number attempted to add to the sudoku board
         row (int): row possition where the Zero spot was found
         col (int): col possition where the Zero spot was found
@@ -78,7 +78,7 @@ def solve_helper(board):
     """A helper function to sudoku puzzle solver
 
     Args:
-        board (list of lists[int]): helper function
+        board (list[list[int]]): helper function
 
     Returns:
         boolean: returns True if guessed number to be added is correct
@@ -111,7 +111,7 @@ def print_board(board):
     """Print the sudoku board
 
     Args:
-        board (list of lists): sudoku board, list of list[int]
+        board (list[list[int]]): sudoku board, list of lists
     """
     board_len = len(board)
 
@@ -129,17 +129,17 @@ def print_board(board):
 
 
 if __name__ == "__main__":
-
+    # Slow case
     board = [
+        [0, 0, 0, 7, 0, 3, 5, 0, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 6, 0, 9, 0, 0],
+        [1, 0, 0, 0, 0, 5, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 6, 0, 0, 0, 0],
-        [0, 8, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 5, 0],
-        [0, 0, 8, 5, 0, 0, 0, 0, 2],
-        [0, 0, 7, 0, 0, 0, 0, 0, 0],
-        [0, 0, 6, 0, 0, 0, 4, 0, 0],
-        [8, 0, 4, 0, 0, 0, 9, 1, 5],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 6, 0, 0, 0, 0, 2, 0, 4],
+        [0, 0, 0, 0, 7, 0, 8, 0, 1],
+        [7, 0, 6, 0, 0, 0, 0, 0, 0],
+        [5, 0, 3, 0, 0, 0, 6, 9, 0],
     ]
 
     print_board(board)

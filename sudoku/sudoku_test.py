@@ -15,7 +15,8 @@ SQUARE_SIZE = 9
 
 
 def generate_board():
-    num_init_cells = random.randint(1, 3 * SQUARE_SIZE)
+    # TODO: #14 - Add support for randomly generating valid sudoku boards to solve
+    num_init_cells = 1
     cords = {
         (random.randint(0, SQUARE_SIZE - 1), random.randint(0, SQUARE_SIZE - 1))
         for _ in range(num_init_cells)
@@ -38,10 +39,9 @@ def generate_board():
 
 @pytest.mark.parametrize("board", [generate_board() for _ in range(NUM_BOARDS)])
 def test_random_sudoku(board):
-    solution = sudoku.solve_board(board)
-    if solution[0]:
-        assert validate_sudoku_board(solution[1]), "Invalid solution:\n{}".format(
-            pprint.pformat(solution[1])
-        )
-    else:
-        print("Invalid solution:")
+    pprint.pprint(board)
+    status, solution = sudoku.solve_board(board)
+    pprint.pprint(solution)
+    assert status and validate_sudoku_board(solution), "Invalid solution:\n{}".format(
+        pprint.pformat(solution)
+    )
