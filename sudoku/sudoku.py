@@ -6,11 +6,10 @@ def solve_board(input_board):
     """Solve a sudoku puzzle
 
     Args:
-        input_board (list[list[]]): list of lists with integers
-        representing the sudoku board
+        input_board (list[list[int]]): Representation of the board.
 
     Returns:
-        tuple : status of solution and the sudoku board
+        tuple: status of solution and the sudoku board
     """
     board = copy.deepcopy(input_board)
     if solve_helper(board):
