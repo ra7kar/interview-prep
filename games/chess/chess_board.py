@@ -1,4 +1,4 @@
-# with respect to position, list valid chess piece moves
+# With respect to position, list valid chess piece moves
 
 # External
 from abc import ABCMeta, abstractmethod
@@ -33,6 +33,8 @@ class ChessPiece(metaclass=ABCMeta):
 
     def __init__(self, row, col):
 
+        self.name = type(self).__name__
+
         if row > 8 or row < 1:
             raise ValueError("Row is not in valid range")
         self.row = row
@@ -44,12 +46,7 @@ class ChessPiece(metaclass=ABCMeta):
     def get_position(self):
         return (self.row, self.col)
 
-    def set_name(self):
-        self.name = type(self).__name__
-
     def get_name(self):
-        if not hasattr(self, "name"):
-            self.set_name()
         return self.name
 
     @abstractmethod
@@ -133,44 +130,53 @@ class Queen(ChessPiece):
 
 
 # ----------
+if __name__ == "__main__":
 
-row = 8
-col = 8
+    row = 8
+    col = 8
 
-print("-" * 75)
-king = King(row, col)
-print("")
-print(
-    "Initial Position of the " + king.get_name() + " is : " + str(king.get_position())
-)
-print("-" * 40)
+    print("-" * 75)
+    king = King(row, col)
+    print("")
+    print(
+        "Initial Position of the "
+        + king.get_name()
+        + " is : "
+        + str(king.get_position())
+    )
+    print("-" * 40)
+    print("Valid moves for the " + king.get_name() + " is : ", end="")
+    print(king.get_valid_moves())
+    print("-" * 75)
+    print("")
+    # --------------------
+    print("")
+    bishop = Bishop(row, col)
+    print(
+        "Initial Position of the "
+        + bishop.get_name()
+        + " is : "
+        + str(bishop.get_position())
+    )
+    print("-" * 40)
 
-print(king.get_valid_moves())
-print("-" * 75)
-print("")
-# --------------------
-print("")
-bishop = Bishop(row, col)
-print(
-    "Initial Position of the "
-    + bishop.get_name()
-    + " is : "
-    + str(bishop.get_position())
-)
-print("-" * 40)
+    print("Valid moves for the " + bishop.get_name() + " is : ", end="")
+    print(bishop.get_valid_moves())
+    print("-" * 75)
+    print("")
+    # --------------------
+    print("")
+    queen = Queen(row, col)
+    print(
+        "Initial Position of the "
+        + queen.get_name()
+        + " is : "
+        + str(queen.get_position())
+    )
+    print("-" * 40)
 
-print(bishop.get_valid_moves())
-print("-" * 75)
-print("")
-# --------------------
-print("")
-queen = Queen(row, col)
-print(
-    "Initial Position of the " + queen.get_name() + " is : " + str(queen.get_position())
-)
-print("-" * 40)
-
-print(queen.get_valid_moves())
-print("-" * 75)
-print("")
-# ------------------------------
+    print("Valid moves for the " + queen.get_name() + " is : ", end="")
+    print(queen.get_valid_moves())
+    print("-" * 75)
+    print("")
+    # ------------------------------
