@@ -132,8 +132,7 @@ class Queen(ChessPiece):
 # ----------
 if __name__ == "__main__":
 
-    row = 8
-    col = 8
+    row, col = int(input("Enter row : ")), int(input("Enter col : "))
 
     print("-" * 75)
     king = King(row, col)
