@@ -26,7 +26,7 @@ def is_valid_position(row, col):
 
 class ChessPiece(metaclass=ABCMeta):
     """Abstract base class of Chess piece
-    Inherted from metaclass
+    metaclass derived from ABCMeta
     """
 
     def __init__(self, row, col):
