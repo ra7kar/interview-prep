@@ -26,14 +26,10 @@ def is_valid_position(row, col):
 
 class ChessPiece(metaclass=ABCMeta):
     """Abstract base class of Chess piece
-
-    Args:
-        metaclass (ABC, optional): Defaults to ABCMeta.
+    Inherted from metaclass
     """
 
     def __init__(self, row, col):
-
-        self.name = type(self).__name__
 
         if row > 8 or row < 1:
             raise ValueError("Row is not in valid range")
@@ -46,12 +42,13 @@ class ChessPiece(metaclass=ABCMeta):
     def get_position(self):
         return (self.row, self.col)
 
-    def get_name(self):
-        return self.name
-
     @abstractmethod
     def get_valid_moves(self):
         raise NotImplementedError
+
+    @property
+    def name(self):
+        return type(self).__name__
 
 
 class King(ChessPiece):
@@ -137,14 +134,9 @@ if __name__ == "__main__":
     print("-" * 75)
     king = King(row, col)
     print("")
-    print(
-        "Initial Position of the "
-        + king.get_name()
-        + " is : "
-        + str(king.get_position())
-    )
+    print("Initial Position of the " + king.name + " is : " + str(king.get_position()))
     print("-" * 40)
-    print("Valid moves for the " + king.get_name() + " is : ", end="")
+    print("Valid moves for the " + king.name + " is : ", end="")
     print(king.get_valid_moves())
     print("-" * 75)
     print("")
@@ -152,14 +144,11 @@ if __name__ == "__main__":
     print("")
     bishop = Bishop(row, col)
     print(
-        "Initial Position of the "
-        + bishop.get_name()
-        + " is : "
-        + str(bishop.get_position())
+        "Initial Position of the " + bishop.name + " is : " + str(bishop.get_position())
     )
     print("-" * 40)
 
-    print("Valid moves for the " + bishop.get_name() + " is : ", end="")
+    print("Valid moves for the " + bishop.name + " is : ", end="")
     print(bishop.get_valid_moves())
     print("-" * 75)
     print("")
@@ -167,14 +156,11 @@ if __name__ == "__main__":
     print("")
     queen = Queen(row, col)
     print(
-        "Initial Position of the "
-        + queen.get_name()
-        + " is : "
-        + str(queen.get_position())
+        "Initial Position of the " + queen.name + " is : " + str(queen.get_position())
     )
     print("-" * 40)
 
-    print("Valid moves for the " + queen.get_name() + " is : ", end="")
+    print("Valid moves for the " + queen.name + " is : ", end="")
     print(queen.get_valid_moves())
     print("-" * 75)
     print("")
