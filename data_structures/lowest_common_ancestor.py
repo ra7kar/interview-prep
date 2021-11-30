@@ -84,18 +84,16 @@ def find_ancestor(sub_root, v1, v2):
 
     if sub_root is None:
         return None
-    if sub_root.data == v1 or sub_root.data == v2:
+    if sub_root.data in [v1, v2]:
         return sub_root
 
     left_node = find_ancestor(sub_root.left, v1, v2)
     right_node = find_ancestor(sub_root.right, v1, v2)
 
-    if left_node is not None and right_node is not None:
+    if left_node and right_node:
         return sub_root
-    elif left_node is not None:
-        return left_node
-    else:
-        return right_node
+
+    return left_node or right_node
 
 
 if __name__ == "__main__":
