@@ -23,43 +23,42 @@ class BinaryTree:
         if list_len is None:
             print("Binary list empty")
 
-        self.sub_root = None
+        self.root = None
 
         for i in py_list:
             self.add_node(i)
 
     def add_node(self, data):
-
-        if self.sub_root is None:
-            self.sub_root = Node(data)
+        if self.root is None:
+            self.root = Node(data)
         else:
-            self._add_helper(self.sub_root, data)
+            self._add_helper(self.root, data)
 
-    def _add_helper(self, sub_sub_root, data):
+    def _add_helper(self, sub_root, data):
 
-        if data < sub_sub_root.data:
-            if sub_sub_root.left is None:
-                sub_sub_root.left = Node(data)
+        if data < sub_root.data:
+            if sub_root.left is None:
+                sub_root.left = Node(data)
             else:
-                self._add_helper(sub_sub_root.left, data)
+                self._add_helper(sub_root.left, data)
         else:
-            if sub_sub_root.right is None:
-                sub_sub_root.right = Node(data)
+            if sub_root.right is None:
+                sub_root.right = Node(data)
             else:
-                self._add_helper(sub_sub_root.right, data)
+                self._add_helper(sub_root.right, data)
 
     def __iter__(self):
-        def inorder_traversal(sub_sub_root):
+        def inorder_traversal(sub_root):
 
-            if sub_sub_root.left:
-                yield from inorder_traversal(sub_sub_root.left)
+            if sub_root.left:
+                yield from inorder_traversal(sub_root.left)
 
-            yield sub_sub_root
+            yield sub_root
 
-            if sub_sub_root.right:
-                yield from inorder_traversal(sub_sub_root.right)
+            if sub_root.right:
+                yield from inorder_traversal(sub_root.right)
 
-        yield from inorder_traversal(self.sub_root)
+        yield from inorder_traversal(self.root)
 
     def __str__(self) -> str:
         out = []
@@ -103,7 +102,8 @@ if __name__ == "__main__":
     for _ in range(10):
         v1 = int(input("Enter v1 : "))
         v2 = int(input("Enter v2 : "))
-        ancestor = find_ancestor(bt.sub_root, v1, v2)
+
+        ancestor = find_ancestor(bt.root, v1, v2)
         print(
             "Lowest common ancestor value of v1:"
             + str(v1)
