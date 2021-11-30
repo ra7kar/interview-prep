@@ -79,23 +79,23 @@ def find_ancestor(sub_root, v1, v2):
         v2 (int): secont node value from the supplied binary tree
 
     Returns:
-        (int): returns integer value representing the lowest common ancestor
+        (node): returns Node representing the lowest common ancestor
     """
 
     if sub_root is None:
         return None
     if sub_root.data == v1 or sub_root.data == v2:
-        return sub_root.data
+        return sub_root
 
-    left_node_value = find_ancestor(sub_root.left, v1, v2)
-    right_node_value = find_ancestor(sub_root.right, v1, v2)
+    left_node = find_ancestor(sub_root.left, v1, v2)
+    right_node = find_ancestor(sub_root.right, v1, v2)
 
-    if left_node_value is not None and right_node_value is not None:
-        return sub_root.data
-    elif left_node_value is not None:
-        return left_node_value
+    if left_node is not None and right_node is not None:
+        return sub_root
+    elif left_node is not None:
+        return left_node
     else:
-        return right_node_value
+        return right_node
 
 
 if __name__ == "__main__":
