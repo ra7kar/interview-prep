@@ -1,6 +1,12 @@
 # Find the binary tree height
 
-# Binary Tree --------
+
+import random
+
+
+# Node of the Binary Tree
+
+
 class Node:
     def __init__(self, data) -> None:
         self.data = data
@@ -71,6 +77,7 @@ class Node:
         return lines, n + m + u, max(p, q) + 2, n + u // 2
 
 
+# Binary Tree
 class BinaryTree:
     def __init__(self, pylist=[]) -> None:
         self.root = None
@@ -114,6 +121,14 @@ class BinaryTree:
 
 
 def bt_height(sub_root):
+    """get the height of the binary tree
+
+    Args:
+        sub_root (Node object): Node of the binary tree
+
+    Returns:
+        [int]: returns the hight of the binary tree
+    """
     if sub_root is None:
         return 0
 
@@ -129,9 +144,24 @@ def bt_height(sub_root):
 
 
 # --------------------------- Main -----------------------
+
+
 if __name__ == "__main__":
 
-    pylist = [10, 6, 4, 7, 14, 12, 13, 11, 3, 5, 2]
+    # pylist = [10, 6, 4, 7, 14, 12, 13, 11, 3, 5, 2]
+    pylist = []
+    if len(pylist) == 0:
+        for i in range(10):
+            n = random.randint(1, 25)
+            if n not in pylist:
+                pylist.append(n)
+            else:
+                i -= 1
+                print(n)
+
+    print("List of numbers", end="")
+    print(pylist)
+    print("Length of list :" + str(len(pylist)))
 
     bt = BinaryTree(pylist)
     print()
