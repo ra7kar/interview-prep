@@ -9,7 +9,10 @@ from list_comprehension import list_comp
     "x,y,z,n, result",
     [
         (
-            [2, 2, 2, 2],
+            2,
+            2,
+            2,
+            2,
             [
                 [0, 0, 0],
                 [0, 0, 1],
@@ -34,7 +37,7 @@ from list_comprehension import list_comp
                 [2, 2, 2],
             ],
         ),
-        ([1, 1, 1, 2], [[0, 0, 0], [0, 0, 1], [0, 1, 0], [1, 0, 0], [1, 1, 1]]),
+        (1, 1, 1, 2, [[0, 0, 0], [0, 0, 1], [0, 1, 0], [1, 0, 0], [1, 1, 1]]),
     ],
 )
 def test_list_comprehension(x, y, z, n, result):

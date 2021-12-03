@@ -25,5 +25,7 @@ def list_comp(x, y, z, n):
     return l_list
 
 
-l_list = list_comp(1, 1, 1, 2)
-print(l_list)
+if __name__ == "__main__":
+
+    l_list = list_comp(1, 1, 1, 2)
+    print(l_list)
