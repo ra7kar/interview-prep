@@ -11,9 +11,9 @@ class Node:
 
 
 class LinkList:
-    def __init__(self, pylist=[]) -> None:
+    def __init__(self, py_list=[]) -> None:
         self.head = None
-        for i in pylist:
+        for i in py_list:
             self.add(i)
 
     def add(self, data):

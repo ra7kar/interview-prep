@@ -1,4 +1,4 @@
-# remove duplicate valuse from a linked sorted list.
+# remove duplicate values from a linked sorted list.
 
 from linked_list import LinkedList
 
