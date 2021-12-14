@@ -9,11 +9,11 @@ from dict_text_analysis import text_analysis
     "file_name, result",
     [
         (
-            "/Users/rct/src/interview-prep/data_structures/test1.txt",
+            "data_structures/test1.txt",
             {"#": 1, "test": 2},
         ),
         (
-            "/Users/rct/src/interview-prep/data_structures/test2.txt",
+            "data_structures/test2.txt",
             {"#": 1, "test": 2, "check": 1, "this": 1, "out": 1},
         ),
     ],
