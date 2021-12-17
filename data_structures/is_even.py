@@ -29,7 +29,7 @@ if __name__ == "__main__":
     option = "OR"  # OR
     #    option = "XOR"    # XOR
 
-    n = 1
+    n = 101
 
     ret_val = is_even(n, option)
     print("")
