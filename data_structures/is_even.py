@@ -2,29 +2,37 @@
 # without using the mod, div or multiplication operators.
 
 
-def is_even(n):
+def is_even(n, option="AND"):
 
     # using Bit wise AND operation
-    # if n & 1 == 1 :
-    #     return False
-
-    # return True
+    if option == "AND":
+        if n & 1 == 1:
+            return False  # ODD
+        return True  # EVEN
 
     # using bit wise OR operation
-    # if n | 1 > n:
-    #     return False
-    # return True
+    if option == "OR":
+        if n | 1 > n:
+            return True
+        return False
 
     # using bit wise XOR operation
-    if n ^ 1 < n:
-        return False
-    return True
+    if option == "XOR":
+        if n ^ 1 < n:
+            return False
+        return True
 
 
 if __name__ == "__main__":
 
-    n = 11
+    option = "AND"  # AND
+    option = "OR"  # OR
+    #    option = "XOR"    # XOR
 
-    ret_val = is_even(n)
-    print(ret_val)
-    print("Selected number is {}, which is {} ".format(n, "even" if ret_val else "odd"))
+    n = 1
+
+    ret_val = is_even(n, option)
+    print("")
+    print("Selected number is : {}".format(n))
+    print("Number is          : {}".format("Even" if ret_val else "Odd"))
+    print("Option used        : {}".format(option))
