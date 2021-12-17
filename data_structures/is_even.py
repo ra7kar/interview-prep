@@ -4,14 +4,21 @@
 
 def is_even(n):
 
-    is_even = True
-    for _ in range(1, n + 1):
-        if is_even:
-            is_even = False
-        else:
-            is_even = True
+    # using Bit wise AND operation
+    # if n & 1 == 1 :
+    #     return False
 
-    return is_even
+    # return True
+
+    # using bit wise OR operation
+    # if n | 1 > n:
+    #     return False
+    # return True
+
+    # using bit wise XOR operation
+    if n ^ 1 < n:
+        return False
+    return True
 
 
 if __name__ == "__main__":
@@ -20,4 +27,4 @@ if __name__ == "__main__":
 
     ret_val = is_even(n)
     print(ret_val)
-    print("Selected number is {} which is {}".format(n, "even" if ret_val else "odd"))
+    print("Selected number is {}, which is {} ".format(n, "even" if ret_val else "odd"))
