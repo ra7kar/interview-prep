@@ -1,17 +1,5 @@
 # dictionaries for text analysis in a file.
 
-import argparse
-
-parser = argparse.ArgumentParser(description="Find word count in a file")
-parser.add_argument(
-    "-f",
-    "--file_name",
-    default="test2.txt",
-    type=str,
-    help="File name with path if not in local dir",
-)
-args = parser.parse_args()
-
 
 def text_analysis(file_name):
 
@@ -28,6 +16,6 @@ def text_analysis(file_name):
 
 
 if __name__ == "__main__":
-    count = text_analysis(args.file_name)
+    count = text_analysis("test1.txt")
     filtered = {key: value for key, value in count.items() if value < 20}
     print(filtered)
