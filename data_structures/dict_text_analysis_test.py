@@ -13,11 +13,11 @@ cdw = os.getcwd()
     [
         (
             "/test1.txt",
-            {"#": 1, "test": 2},
+            {"#": 1, "test": 2, "ya": 1},
         ),
         (
             "/test2.txt",
-            {"#": 1, "test": 2, "check": 1, "this": 1, "out": 1},
+            {"#": 1, "test": 2, "check": 1, "this": 1, "out": 1, "ya": 1},
         ),
     ],
 )
