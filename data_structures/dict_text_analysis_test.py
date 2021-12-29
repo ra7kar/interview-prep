@@ -3,21 +3,25 @@
 
 import pytest
 from dict_text_analysis import text_analysis
+import os
+
+cdw = os.getcwd()
 
 
 @pytest.mark.parametrize(
     "file_name, result",
     [
         (
-            "/Users/rct/src/interview-prep/data_structures/test1.txt",
+            "/test1.txt",
             {"#": 1, "test": 2},
         ),
         (
-            "/Users/rct/src/interview-prep/data_structures/test2.txt",
+            "/test2.txt",
             {"#": 1, "test": 2, "check": 1, "this": 1, "out": 1},
         ),
     ],
 )
 def test_dict_text_analysis(file_name, result):
-    count = text_analysis(file_name)
+    global cdw
+    count = text_analysis(cdw + file_name)
     assert count == result
