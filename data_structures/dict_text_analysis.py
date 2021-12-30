@@ -1,5 +1,7 @@
 # dictionaries for text analysis in a file.
 
+import os
+
 
 def text_analysis(file_name):
 
@@ -16,6 +18,7 @@ def text_analysis(file_name):
 
 
 if __name__ == "__main__":
-    count = text_analysis("test1.txt")
+    file_name = os.path.dirname(__file__) + "/test1.txt"
+    count = text_analysis(file_name)
     filtered = {key: value for key, value in count.items() if value < 20}
     print(filtered)
