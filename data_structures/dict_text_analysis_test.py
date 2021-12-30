@@ -5,8 +5,6 @@ import pytest
 from dict_text_analysis import text_analysis
 import os
 
-cdw = os.getcwd()
-
 
 @pytest.mark.parametrize(
     "file_name, result",
@@ -22,6 +20,6 @@ cdw = os.getcwd()
     ],
 )
 def test_dict_text_analysis(file_name, result):
-    global cdw
-    count = text_analysis(cdw + file_name)
+    file_name = os.path.dirname(__file__) + file_name
+    count = text_analysis(file_name)
     assert count == result
