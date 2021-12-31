@@ -208,7 +208,7 @@ ll = []  # [6,3,7,1,4,5]
 t = AVLTree(ll)
 
 if len(ll) == 0:
-    insert_list = [random.randint(0, 10) for _ in range(10)]
+    insert_list = [random.randint(0, 10) for _ in range(5)]
 
     for i in insert_list:
         t.insert(i)
