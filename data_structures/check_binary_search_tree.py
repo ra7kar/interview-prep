@@ -76,9 +76,10 @@ class Node:
         return lines, n + m + u, max(p, q) + 2, n + u // 2
 
 
-class BinartTree:
-    def __init__(self):
+class BinaryTree:
+    def __init__(self, py_list):
         self.root = None
+        self.build_tree(py_list)
 
     def add_node(self, sub_root, n1=None, n2=None):
         sub_root.left = n1
@@ -109,7 +110,7 @@ class BinartTree:
         return self
 
     # check if binary tree is a binary search tree
-    def check_bt(self):
+    def is_binary_search_tree(self):
         sub_root = self.root
         bt_list = []
         if self.root is None:
@@ -166,13 +167,12 @@ if __name__ == "__main__":
     py_list = [1, None, 2, None, None, None, 3]
     py_list = [10, 3, 89, 2, 5, 56, 54]
 
-    bt = BinartTree()
-    bt.build_tree(py_list)
+    bt = BinaryTree(py_list)
     print("List is :", end="")
     print(py_list)
     print("Binary tree is :")
     print(bt.root)
-    ret_val, bt_list, v1, v2 = bt.check_bt()
+    ret_val, bt_list, v1, v2 = bt.is_binary_search_tree()
     if ret_val:
         print("Tree is a Binary Search Tree")
     else:

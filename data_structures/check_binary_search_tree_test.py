@@ -1,7 +1,7 @@
 # test file for check_binary_search_tree.
 
 import pytest
-from check_binary_search_tree import BinartTree
+from check_binary_search_tree import BinaryTree
 
 
 @pytest.mark.parametrize(
@@ -21,7 +21,6 @@ from check_binary_search_tree import BinartTree
     ],
 )
 def test_check_binary_search_tree(py_list, result):
-    bt = BinartTree()
-    bt.build_tree(py_list)
-    ret_val, bt_list, v1, v2 = bt.check_bt()
+    bt = BinaryTree(py_list)
+    ret_val, bt_list, v1, v2 = bt.is_binary_search_tree()
     assert ret_val == result
