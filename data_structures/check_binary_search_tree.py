@@ -16,6 +16,8 @@ class Node:
         return "\n".join(lines)
 
     def _display_aux(self):
+        # https://stackoverflow.com/users/1143396/j-v?tab=profile
+        # Thanks to JV for his code.
         # No child.
         if self.right is None and self.left is None:
             if self.height:
@@ -74,85 +76,80 @@ class Node:
         return lines, n + m + u, max(p, q) + 2, n + u // 2
 
 
-class Binary_tree:
+class BinartTree:
     def __init__(self):
         self.root = None
 
+    def add_node(self, sub_root, n1=None, n2=None):
+        sub_root.left = n1
+        sub_root.right = n2
 
-def add_node(sub_root, n1=None, n2=None):
-    sub_root.left = n1
-    sub_root.right = n2
+    def build_tree(self, py_list):
+        py_list_len = len(py_list)
+        q = deque()
+        # create the root
+        if py_list_len == 0:
+            return self
 
+        self.root = Node(py_list[0])
+        sub_root = self.root
+        for i in range(1, py_list_len, 2):
+            n1 = Node(py_list[i])
+            q.append(n1)
+            try:
+                n2 = Node(py_list[i + 1])
+                q.append(n2)
+            except IndexError:
+                n2 = None
 
-def build_tree(py_list):
-    py_list_len = len(py_list)
-    q = deque()
-    bt = Binary_tree()
-    # create the root
-    if py_list_len == 0:
-        return bt
+            self.add_node(sub_root, n1, n2)
 
-    bt.root = Node(py_list[0])
-    sub_root = bt.root
-    for i in range(1, py_list_len, 2):
-        n1 = Node(py_list[i])
-        q.append(n1)
-        try:
-            n2 = Node(py_list[i + 1])
-            q.append(n2)
-        except IndexError:
-            n2 = None
+            sub_root = q.popleft()
 
-        add_node(sub_root, n1, n2)
+        return self
 
-        sub_root = q.popleft()
+    # check if binary tree is a binary search tree
+    def check_bt(self):
+        sub_root = self.root
+        bt_list = []
+        if self.root is None:
+            return (True, self, None, None)
 
-    return bt
+        def get_val(sub_root, bt_list):
+            """In-order traversal
 
+            Args:
+                sub_root (Node object): Node of the binary tree
+                bt_list (list): list to capture the binary tree values
+            """
 
-# check if binary tree is a binary search tree
-def check_bt(bt):
-    sub_root = bt.root
-    bt_list = []
-    if bt.root is None:
-        return (True, bt, None, None)
+            if sub_root.left:
+                get_val(sub_root.left, bt_list)
 
-    def get_val(sub_root, bt_list):
-        """In-order traversal
+            val = sub_root.data
+            bt_list.append(val)
 
-        Args:
-            sub_root (Node object): Node of the binary tree
-            bt_list (list): list to capture the binary tree values
-        """
+            if sub_root.right:
+                get_val(sub_root.right, bt_list)
 
-        if sub_root.left:
-            get_val(sub_root.left, bt_list)
+        get_val(sub_root, bt_list)
 
-        val = sub_root.data
-        bt_list.append(val)
+        # check if bt_list is in assending order.
+        bt_len = len(bt_list)
+        for i in range(bt_len):
+            v1 = bt_list[i]
+            if i < bt_len - 1:
+                v2 = bt_list[i + 1]
+            else:
+                return (True, bt_list, None, None)
 
-        if sub_root.right:
-            get_val(sub_root.right, bt_list)
+            if v1 is None or v2 is None:
+                continue
 
-    get_val(sub_root, bt_list)
+            if v1 > v2:
+                return (False, bt_list, v1, v2)
 
-    # check if bt_list is in assending order.
-    bt_len = len(bt_list)
-    for i in range(bt_len):
-        v1 = bt_list[i]
-        if i < bt_len - 1:
-            v2 = bt_list[i + 1]
-        else:
-            return (True, bt_list, None, None)
-
-        if v1 is None or v2 is None:
-            continue
-
-        if v1 > v2:
-            return (False, bt_list, v1, v2)
-
-    print(bt_list)
-    return (True, bt_list, None, None)
+        return (True, bt_list, None, None)
 
 
 # -------Main------------------
@@ -169,12 +166,13 @@ if __name__ == "__main__":
     py_list = [1, None, 2, None, None, None, 3]
     py_list = [10, 3, 89, 2, 5, 56, 54]
 
-    bt = build_tree(py_list)
+    bt = BinartTree()
+    bt.build_tree(py_list)
     print("List is :", end="")
     print(py_list)
     print("Binary tree is :")
     print(bt.root)
-    ret_val, bt_list, v1, v2 = check_bt(bt)
+    ret_val, bt_list, v1, v2 = bt.check_bt()
     if ret_val:
         print("Tree is a Binary Search Tree")
     else:
