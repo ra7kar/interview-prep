@@ -1,23 +1,4 @@
-# generator example
-
-# first we will implement a regular function to generated Factors. The we will
-# implement the a generator of Factors.
-
-"""regular function to generate factors.
-def factors(k):
-    ret_list = []
-    for i in range(1, k + 1):
-        if k % i == 0:
-            ret_list.append(i)
-
-    return ret_list
-
-
-
-py_list = factors(k)
-print("List generated from a regular function")
-print(py_list)
-"""
+# Implement the a generator of Factors.
 
 
 def factors_gen(k):
@@ -37,6 +18,8 @@ def factor(k):
 if __name__ == "__main__":
 
     k = 100
-    print("number which is a factor")
+    print("")
+    print("Numbers listed below are factors of : " + str(k))
     ret_val = factor(k)
     print(ret_val)
+    print("")
