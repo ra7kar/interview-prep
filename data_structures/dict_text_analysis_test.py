@@ -20,6 +20,8 @@ import os
     ],
 )
 def test_dict_text_analysis(file_name, result):
+
     file_name = os.path.join(os.path.dirname(__file__), file_name)
+
     count = text_analysis(file_name)
     assert count == result

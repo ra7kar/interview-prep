@@ -16,7 +16,9 @@ def text_analysis(file_name):
 
 
 if __name__ == "__main__":
+
     file_name = os.path.join(os.path.dirname(__file__), "test2.txt")
+
     count = text_analysis(file_name)
     filtered = {key: value for key, value in count.items() if value < 20}
     print(filtered)
