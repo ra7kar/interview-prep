@@ -1,8 +1,16 @@
 # Find if a number is even or odd,
 # without using the mod, div or multiplication operators.
 
+from enum import Enum
 
-def is_even(n, option="AND"):
+
+class Options(Enum):
+    AND = "AND"
+    OR = "OR"
+    XOR = "XOR"
+
+
+def is_even(n, option):
 
     # using Bit wise AND operation
     if option == "AND":
@@ -25,11 +33,9 @@ def is_even(n, option="AND"):
 
 if __name__ == "__main__":
 
-    option = "AND"  # AND
-    option = "OR"  # OR
-    #    option = "XOR"    # XOR
+    option = Options.AND.value  # AND
 
-    n = 101
+    n = 100
 
     ret_val = is_even(n, option)
     print("")

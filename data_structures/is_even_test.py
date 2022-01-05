@@ -23,6 +23,7 @@ from is_even import is_even
     ],
 )
 def test_is_even(num, option, result):
+
     ret_val = is_even(num, option)
 
     assert ret_val == result
