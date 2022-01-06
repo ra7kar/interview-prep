@@ -4,28 +4,28 @@
 from enum import Enum
 
 
-class Options(Enum):
-    AND = "AND"
-    OR = "OR"
-    XOR = "XOR"
+class Operations(Enum):
+    AND = 0
+    OR = 1
+    XOR = 2
 
 
 def is_even(n, option):
 
     # using Bit wise AND operation
-    if option == "AND":
+    if option == Operations.AND:
         if n & 1 == 1:
             return False  # ODD
         return True  # EVEN
 
     # using bit wise OR operation
-    if option == "OR":
+    if option == Operations.OR:
         if n | 1 > n:
             return True
         return False
 
     # using bit wise XOR operation
-    if option == "XOR":
+    if option == Operations.XOR:
         if n ^ 1 < n:
             return False
         return True
@@ -33,7 +33,7 @@ def is_even(n, option):
 
 if __name__ == "__main__":
 
-    option = Options.AND.value  # AND
+    option = Operations.AND  # AND
 
     n = 100
 
@@ -41,4 +41,4 @@ if __name__ == "__main__":
     print("")
     print("Selected number is : {}".format(n))
     print("Number is          : {}".format("Even" if ret_val else "Odd"))
-    print("Option used        : {}".format(option))
+    print("Option used        : {}".format(option.name))
