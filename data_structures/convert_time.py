@@ -22,7 +22,7 @@ def convert_time(t):
 # --------------
 def main():
     t = "02:01:00 PM"
-
+    print(t)
     ret_val = convert_time(t)
     print(ret_val)
 
