@@ -1,18 +1,29 @@
-# hacker rank problem Plus Minus
+# Plus Minus: Hacker rank problem
 
 """Given an array of integers, calculate the ratios of its elements that
     are positive, negative, and zero. Print the decimal value of each
-    fraction on a new line with  places after the decimal.
+    fraction on a new line with 6 places after the decimal.
 """
 
 
 def plus_minus(py_list):
+    """Given a list, get the +ve, -ve and Zeors count, and find the ratio with
+    the length of the list. print 3 ration outputs for each, +ve, -ve and Zero
+    in a new line
 
-    # declare a set
+    Args:
+        py_list (list[int]): list of ints
+
+    Returns:
+        list[int]: ratio valuse of +ve, -ve and zeros count, with the len
+        of the list
+    """
+
+    # Initialize output list.
     ret_val = []
     py_list_len = len(py_list)
 
-    # get count of +ve, -ve and 0's
+    # Get count of +ve, -ve and 0's.
     positive_numbers = 0
     negative_numbers = 0
     zeros = 0
