@@ -16,26 +16,16 @@ def is_even(n, option):
     if option == Operations.AND:
 
         return not (n & 1 == 1)
-        # if n & 1 == 1:
-        #     return False  # ODD
-        # return True  # EVEN
 
     # using bit wise OR operation
     if option == Operations.OR:
 
         return n | 1 > n
-        # if n | 1 > n:
-        #     return True
-        # return False
 
     # using bit wise XOR operation
     if option == Operations.XOR:
 
         return not (n ^ 1 < n)
-
-        # if n ^ 1 < n:
-        #     return False
-        # return True
 
 
 if __name__ == "__main__":
