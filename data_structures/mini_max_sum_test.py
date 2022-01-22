@@ -12,6 +12,4 @@ from mini_max_sum import min_max_sum
     ],
 )
 def test_mini_max_sum(py_list, result):
-    ret_val = min_max_sum(py_list)
-
-    assert ret_val == result
+    assert min_max_sum(py_list) == result
