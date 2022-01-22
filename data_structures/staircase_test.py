@@ -1,4 +1,4 @@
-# test script for staircase program.
+# Test script for staircase program.
 
 import pytest
 from staircase import staircase

@@ -1,8 +1,8 @@
-# Staircase - hackerrank problem
+# Staircase - Hackerrank problem
 
 
 def staircase(n):
-    """print a staircase with # character right justified
+    """Print a staircase with # character right justified
 
     Args:
         n (int): print # n times
