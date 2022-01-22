@@ -14,28 +14,35 @@ def is_even(n, option):
 
     # using Bit wise AND operation
     if option == Operations.AND:
-        if n & 1 == 1:
-            return False  # ODD
-        return True  # EVEN
+
+        return not (n & 1 == 1)
+        # if n & 1 == 1:
+        #     return False  # ODD
+        # return True  # EVEN
 
     # using bit wise OR operation
     if option == Operations.OR:
-        if n | 1 > n:
-            return True
-        return False
+
+        return n | 1 > n
+        # if n | 1 > n:
+        #     return True
+        # return False
 
     # using bit wise XOR operation
     if option == Operations.XOR:
-        if n ^ 1 < n:
-            return False
-        return True
+
+        return not (n ^ 1 < n)
+
+        # if n ^ 1 < n:
+        #     return False
+        # return True
 
 
 if __name__ == "__main__":
 
-    option = Operations.AND  # AND
+    option = Operations.XOR  # AND
 
-    n = 100
+    n = 99
 
     ret_val = is_even(n, option)
     print("")
