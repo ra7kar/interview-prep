@@ -13,8 +13,13 @@ def birthday(s, d, m):
     return: int
     """
     count = 0
-    for i in range(len(s)):
-        total = sum(s[i : i + m])
+    total = sum(s[:m])
+    if total == d:
+        count += 1
+
+    for i in range(m, len(s)):
+        total += s[i]
+        total -= s[i - m]
         if total == d:
             count += 1
 
