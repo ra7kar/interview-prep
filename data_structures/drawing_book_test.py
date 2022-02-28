@@ -12,5 +12,5 @@ from drawing_book import drawing_book
         (7, 4, 1),
     ],
 )
-def test_drawing_book(n, b, result):
-    assert drawing_book(n, b) == result
+def test_drawing_book(n, p, result):
+    assert drawing_book(n, p) == result
