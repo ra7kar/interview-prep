@@ -12,7 +12,7 @@ def predictGender(String name) {
     if (getRC.equals(200)) {
         def slurper = new groovy.json.JsonSlurper();
         def result = slurper.parseText(get.getInputStream().getText());
-        return (result.gender, result.count);
+        return [result.gender, result.count];
     } else {
         throw new Exception("HTTP Request to api.genderize.io failed");
     }
