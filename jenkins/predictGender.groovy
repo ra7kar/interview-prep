@@ -19,7 +19,7 @@ def predictGender(String name) {
 }
 
 node {
-    gender, count = predictGender(params.name)
+    [gender, count] = predictGender(params.name)
     stage('Predict Gender') { 
         echo "Predicting Gender for: ${params.name}"
         echo "Probability of prediction: ${gender}"
