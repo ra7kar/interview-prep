@@ -20,6 +20,7 @@ def predictGender(String name) {
 
 node {
     obj = predictGender(params.name)
+    
     stage('Predict Gender') { 
         echo "Predicting Gender for: ${params.name}"
         echo "Probability of prediction: ${obj[0]}"
