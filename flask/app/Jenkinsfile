@@ -1,8 +1,6 @@
 #!/usr/bin/env groovy
 pipeline {
-    agent {
-        docker { image 'app:latest' }
-    }
+    agent { dockerfile true}
     stages {
         stage('Test') {
             steps {
