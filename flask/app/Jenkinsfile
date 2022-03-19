@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('App') {
             steps {
-                sh 'app --version'
-                sh 'svn --version'
+                sh 'docker run -d -p 5000:5000 app'
+                
             }
         }
     }
