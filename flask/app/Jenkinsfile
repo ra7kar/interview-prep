@@ -1,10 +1,11 @@
 #!/usr/bin/env groovy
 pipeline {
-    agent any 
+    agent { dockerfile true }
     stages {
-        stage('Stage 1') {
+        stage('Test') {
             steps {
-                echo 'Hello world!' 
+                sh 'node --version'
+                sh 'svn --version'
             }
         }
     }
