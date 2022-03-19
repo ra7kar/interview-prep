@@ -1,8 +1,8 @@
 #!/usr/bin/env groovy
 pipeline {
-    agent { dockerfile true}
+    agent any
     stages {
-        stage('Test') {
+        stage('App') {
             steps {
                 sh 'app --version'
                 sh 'svn --version'
