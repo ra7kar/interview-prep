@@ -2,10 +2,6 @@
 pipeline {
     agent any
     stages {
-        stage('Build Docker Image'){
-            sh 'docker build -t app .'
-
-        }
         stage('App') {
             steps {
                 sh 'docker run -d -p 5000:5000 app:latest'
