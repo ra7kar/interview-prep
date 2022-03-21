@@ -1,13 +1,12 @@
 #!/usr/bin/env groovy
-pipeline {
-    agent any
-    stages {
-        stage('App') {
-            steps {
-                sh 'docker run -v /var/run/docker.sock:/var/run/docker.sock \
-                    -ti -d -p 5000:5000 app:latest'
-                
-            }
+node {
+    stage('Application') {
+        try {
+            sh 'docker run -dp 5000:5000 app:latest .'
+        }
+        catch (exc) {
+            echo 'Something failed'
+            throw
         }
     }
 }
