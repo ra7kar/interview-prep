@@ -1,0 +1,11 @@
+#!/usr/bin/env groovy
+node {
+    stage('Application') {
+        try {
+            sh 'docker run -dp 5000:5000 app:latest .'
+        }
+        catch (exc) {
+            echo 'Something failed'
+        }
+    }
+}
