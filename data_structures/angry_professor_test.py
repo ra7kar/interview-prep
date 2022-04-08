@@ -9,7 +9,6 @@ from angry_professor import angry_professor
     [
         (4, [-2, -1, 4, 2], "YES"),
         (2, [-2, -1, 4, 2], "NO"),
-        (),
     ],
 )
 def test_angry_professor(k, a, result):
