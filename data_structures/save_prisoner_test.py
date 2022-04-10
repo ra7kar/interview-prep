@@ -4,7 +4,7 @@ import pytest
 from save_prisoner import save_prisoner
 
 
-@pytest(
+@pytest.mark.parametrize(
     "n, m, s, result",
     [
         (3, 7, 3, 3),
