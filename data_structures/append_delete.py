@@ -20,13 +20,13 @@ def append_delete(s, t, k):
     # total_len <= k YES
 
     if total_len <= 2 * count + k and total_len % 2 == k % 2 or total_len <= k:
-        return "YES"
+        return "Yes"
     else:
-        return "NO"
+        return "No"
 
 
 def main():
-    s = "abc"
+    s = "abcd"
     f = "defg"
     k = 7
     print(append_delete(s, f, k))
