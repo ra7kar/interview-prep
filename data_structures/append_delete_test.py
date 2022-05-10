@@ -7,7 +7,7 @@ from append_delete import append_delete
 @pytest.mark.parametrize(
     "s, f, k, result",
     [
-        ("abcd, defg, 7", "No"),
+        ("ashley, ash, 2", "No"),
         ("hackerhappy, hackerrank, 9", "Yes"),
         ("aba, aba, 7", "Yes"),
     ],
