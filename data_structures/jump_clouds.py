@@ -24,15 +24,8 @@ def jump_clouds(c):
 
 def main():
 
-    c = [
-        0,
-        0,
-        1,
-        0,
-        0,
-        1,
-        0,
-    ]
+    c = [0, 0, 1, 0, 0, 1, 0]
+
     print(jump_clouds(c))
 
     pass

@@ -7,18 +7,7 @@ from jump_clouds import jump_clouds
 @pytest.mark.parametrize(
     "c, result",
     [
-        (
-            [
-                0,
-                0,
-                1,
-                0,
-                0,
-                1,
-                0,
-            ],
-            4,
-        ),
+        ([0, 0, 1, 0, 0, 1, 0], 4),
         ([0, 0, 0, 1, 0, 0], 3),
     ],
 )
