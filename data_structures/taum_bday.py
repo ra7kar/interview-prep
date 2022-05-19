@@ -19,11 +19,11 @@ def main():
     wc = 9  # white gift cost
     z = 2  # the cost to convert one color gift to the other color
 
-    # b = 7
-    # w = 7
-    # bc = 4
-    # wc = 2
-    # z = 1
+    b = 7
+    w = 7
+    bc = 4
+    wc = 2
+    z = 1
 
     print(taum_bday(b, bc, w, wc, z))
 
