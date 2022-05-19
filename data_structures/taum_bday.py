@@ -2,7 +2,7 @@
 # https://www.hackerrank.com/challenges/taum-and-bday/problem?h_r=next-challenge&h_v=zen
 
 
-def taum_bday(b, w, bc, wc, z):
+def taum_bday(b, bc, w, wc, z):
 
     if wc > bc + z:  # replace wc to bc + Z
         wc = bc + z
@@ -19,13 +19,13 @@ def main():
     wc = 9  # white gift cost
     z = 2  # the cost to convert one color gift to the other color
 
-    b = 7
-    w = 7
-    bc = 4
-    wc = 2
-    z = 1
+    # b = 7
+    # w = 7
+    # bc = 4
+    # wc = 2
+    # z = 1
 
-    print(taum_bday(b, w, bc, wc, z))
+    print(taum_bday(b, bc, w, wc, z))
 
 
 if __name__ == "__main__":
