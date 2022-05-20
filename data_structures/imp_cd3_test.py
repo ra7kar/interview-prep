@@ -15,7 +15,7 @@ from imp_cd3 import cd
         (
             "/Users/rct/src/interview-prep/data_structures",
             ["..", "../..", "test", "../"],
-            "Users/rct/test2",
+            "Users/rct",
         ),
     ],
 )
