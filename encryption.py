@@ -32,11 +32,7 @@ def encryption(s):
         result.append("".join(temp))
 
     # convert it to required output format.
-    ret_val = ""
-    for i in result:
-        ret_val += i + " "
-
-    return ret_val
+    return " ".join(result)
 
 
 def main():
