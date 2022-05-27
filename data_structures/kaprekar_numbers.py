@@ -25,9 +25,9 @@ def kaprekar_numbers(p, q):
             ret_val.append(str(i))
 
     if ret_val:
-        print(*ret_val)
+        return ret_val
     else:
-        print("INVALID RANGE")
+        return "INVALID RANGE"
 
 
 def main():
@@ -35,7 +35,7 @@ def main():
     p = 1
     q = 700
 
-    kaprekar_numbers(p, q)
+    print(kaprekar_numbers(p, q))
 
 
 if __name__ == "__main__":

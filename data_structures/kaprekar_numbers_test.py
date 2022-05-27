@@ -7,7 +7,7 @@ from kaprekar_numbers import kaprekar_numbers
 @pytest.mark.parametrize(
     "p, q, result",
     [
-        (1, 700, "1 9 45 55 99 297"),
+        (1, 700, ["1", "9", "45", "55", "99", "297"]),
         (300, 700, "INVALID RANGE"),
     ],
 )
