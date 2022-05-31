@@ -21,5 +21,5 @@ from graph_depth_first_search import Graph
     ],
 )
 def test_graph_DPF(graph, source_node, result):
-    g = Graph(graph, source_node, result)
+    g = Graph(graph, source_node)
     assert g.depth_first_search() == result
