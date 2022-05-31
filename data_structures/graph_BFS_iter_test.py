@@ -22,4 +22,4 @@ from graph_BFS_iterative import Graph
 )
 def test_BFS_iterative(graph, source_node, result):
     g = Graph(graph, source_node)
-    assert g.breadth_first_search(graph, source_node) == result
+    assert g.breadth_first_search() == result
