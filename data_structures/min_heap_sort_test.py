@@ -6,7 +6,7 @@ from min_heap_sort import MinHeap
 
 
 @pytest.mark.parametrize(
-    "l, result",
+    "py_list, result",
     [
         ([4, 5, 6, 7, 1, 2, 3], [1, 2, 3, 4, 5, 6, 7]),
         ([3, 5, 7, 1, 5, 8, 2, 1], [1, 1, 2, 3, 5, 5, 7, 8]),
