@@ -63,8 +63,13 @@ class HuffmanCoding:
         code = ""
         self.create_codes_helper(root, code)
 
-    def encoded_text(self):
-        print(self.codes)
+    def encoded_text(self, text):
+        ret_text = ""
+        for char in text:
+            ret_text += self.codes[char] + " "
+
+        ret_text = ret_text.rstrip(" ")
+        return ret_text
 
     def compress(self, text):
 
@@ -81,17 +86,17 @@ class HuffmanCoding:
         self.create_codes()
 
         # print codes
-        self.encoded_text()
+        return self.encoded_text(text)
 
 
 if __name__ == "__main__":
 
+    text = "444225"
+    text = "adbcacc"
     text = "abac"
-    # text = 'adbcacc'
-    # text = '444225'
     text = "adbcacc"
 
     print(text)
     hc = HuffmanCoding()
 
-    hc.compress(text)
+    print(hc.compress(text))
